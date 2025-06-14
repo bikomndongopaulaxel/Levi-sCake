@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Douceurs Maison</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #dbedf9;
+            color: #333;
+        }
+        header {
+            background-color: #ccdcf5;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        nav {
+            /* background-color: #c1d4f5; */
+            background: linear-gradient(to right, #f4c8e0,#86d0f2);
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+        .container {
+            padding: 30px;
+
+        }
+        .product {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: white;
+        }
+        .product img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+        }
+        footer {
+            background-color: #355c7d;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+        }
+       /* la bande de partager votre site  */
+        .link-invitation {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba; 
+            padding: 15px;
+            margin: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 27, 5, 0.4);
+        }
+        .link-invitation a {
+            color: #bacaf7;
+            font-weight: bold;
+            text-decoration: none;
+        }
+.catalogue-gateaux {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 colonnes égales */
+  gap: 90px; /* espace entre les images */
+  justify-content: center;
+  padding: 0 20px;
+  max-width: 900px; /* limite largeur totale */
+  margin: 0 auto; /* centre horizontalement */
+}
+
+.gateau {
+  border: 4px double white;
+  padding: 1em;
+  text-align: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.gateau:hover {
+  transform: translateY(-5px);
+}
+
+.gateau img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.gateau img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.banniere {
+  background: linear-gradient(to right, #ffdde1, #fbd3e9);
+  padding: 1em;
+  text-align: center;
+  color: #333;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 1.8em;
+  color: #aadff5;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+gap: 1.5em;
+  padding: 0;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.hero {
+  margin-top: 2em;
+}
+
+.hero h2 {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+}
+
+.hero .btn-hero {
+  padding: 10px 20px;
+  background-color: #b4e5f3;
+  color: #fff;
+  border: none;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.info-rapide {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin: 2em 0;
+}
+
+.info-rapide a {
+  text-decoration: none;
+  color: #000;
+}
+
+.info-box {
+  background-color: #fff0f6;
+  padding: 1em 2em;
+  border-radius: 10px;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.galerie {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 2em;
+  background-color: #fff;
+}
+
+.galerie img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+}
+
+.galerie img:hover {
+  transform: scale(1.07);
+}
+
+
+.hero {
+  position: relative;
+  padding: 3em 1em;
+  background: linear-gradient(to right, #86d0f2, #f4c8e0);
+  overflow: hidden;
+}
+
+.produits-fond {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.produits-fond .item {
+  position: absolute;
+  width: 150px;
+  height: auto;
+  object-fit: contain;
+  opacity: 0.9;
+}
+
+.item.left {
+  left: 5%;
+  top: 10%;
+}
+.item.right {
+  left: 5%;
+  top: 15%;
+}
+
+.logo-img {
+  height: 150px;
+  width: auto;
+  filter: drop-shadow(0 0 6px #00bfff);
+  transition: transform 0.3s, filter 0.3s;
+  background-image: url("c:\Users\FUJITSU\Desktop\Nouveau dossier\image\autre.png");
+   background-size: cover;
+  background-position: center;
+}
+
+.logo-img:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 10px #00bfff);
+}
+
+
+.banniere-hero {
+  height: 100vh;
+  background: linear-gradient(to right, #f4c8e0, #86d0f2);
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 2em;
+  background: rgba(255, 255, 255, 0.2); /* effet transparent */
+  backdrop-filter: blur(5px);
+}
+
+.logo-img {
+  width: 100px;
+  height: auto;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 2em;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.menu li a:hover {
+  color: #333;
+}
+
+.hero-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2em;
+}
+
+.hero-text h2 {
+  font-size: 2.5em;
+  margin-bottom: 0.5em;
+  color: #fff;
+}
+
+.hero-text p {
+  font-size: 1.2em;
+  margin-bottom: 1em;
+}
+
+.btn-hero {
+  padding: 12px 24px;
+  background-color: #f18acb;
+  color: #fff;
+  border: none;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.hero-img img {
+  width: 250px;
+  max-width: 80%;
+  height: auto;
+  margin-top: 2em;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+.grille-nouveautes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+  background-color: #fff4f8;
+}
+
+.gateaue {
+  width: calc(33.333% - 13.33px); /* 3 par ligne avec espace */
+  background-color: white;
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.gateaue img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.gateaue:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.produit {
+  width: 250px;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #fdfdfd;
+  text-align: center;
+  transition: transform 0.3s ease;
+   
+}
+
+.produit:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+
+/* Couleur spéciale pour nouveauté */
+.nouveaute {
+  background-color: #e6f0ff;
+}
+
+.nouveaute:hover {
+  background-color: #d0e3ff;
+}
+
+@media (max-width: 900px) {
+  .gateaue {
+    width: calc(50% - 10px);
+  }
+}
+
+@media (max-width: 600px) {
+  .gateaue {
+    width: 50%;
+  }
+}
+
+.grille-nouveautes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 20px;
+  background-color: #fff4f8;
+}
+
+.gateaue {
+  width: calc(33.333% - 13.33px);
+  background-color: white;
+  border-radius: 15px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gateaue img {
+  width: 100%;
+  height: 200px; /* 👈 Taille fixe pour uniformiser */
+  object-fit: cover; /* 👈 Pour que l’image remplisse sans être déformée */
+  border-radius: 10px;
+}
+
+/* ✅ Texte lisible mais petit */
+.gateaue h3 {
+  font-size: 1rem; /* Environ 16px */
+  margin: 10px 0 5px;
+}
+
+.gateaue p {
+  font-size: 0.9rem; /* Environ 14px */
+  color: #444;
+  margin: 0;
+}
+
+/* ✅ Effet au survol */
+.gateaue:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* ✅ Responsive : petit écran */
+@media (max-width: 900px) {
+  .gateaue {
+    width: calc(50% - 10px);
+  }
+}
+
+@media (max-width: 600px) {
+  .gateaue {
+    width: 100%;
+  }
+
+  .gateaue img {
+    height: 180px; /* 👈 Taille réduite sur petits écrans */
+  }
+
+  .gateaue h3 {
+    font-size: 0.95rem;
+  }
+
+  .gateauee p {
+    font-size: 0.85rem;
+  }
+}
+
+
+.menu-principal {
+  background-color: #ffe8f0; /* rose doux pour coller à ton thème */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 15px 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.menu-principal ul {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-principal a {
+  text-decoration: none;
+  color: #222;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.menu-principal a:hover {
+  color: #d72669; /* couleur au survol */
+}
+
+    /* pour le formulaire de commande */
+
+.bloc-formulaire {
+  max-width: 500px;
+  margin: 50px auto;
+  background: #fff5f8;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.bloc-formulaire h2 {
+  margin-bottom: 20px;
+  color: #d72669;
+  font-size: 1.8rem;
+}
+
+.bloc-formulaire form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.bloc-formulaire label {
+  text-align: left;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #444;
+}
+
+.bloc-formulaire input,
+.bloc-formulaire select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.bloc-formulaire button {
+  background-color: #d72669;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.bloc-formulaire button:hover {
+  background-color: #a91f50;
+}
+
+.bloc-formulaire p {
+  font-size: 0.95rem;
+  margin: 10px 0;
+  color: #333;
+}
+
+@media (max-width: 600px) {
+  .bloc-formulaire {
+    margin: 30px 15px;
+    padding: 20px;
+  }
+
+  .bloc-formulaire h2 {
+    font-size: 1.5rem;
+  }
+
+  .bloc-formulaire input,
+  .bloc-formulaire select {
+    font-size: 0.95rem;
+  }
+
+  .bloc-formulaire p {
+    font-size: 0.9rem;
+  }
+}
+
+#livraison {
+  background: #fdf3f6;
+}
+
+.livraison-liste {
+  list-style: none;
+  padding-left: 0;
+  text-align: left;
+  margin: 20px auto;
+  max-width: 90%;
+}
+
+.livraison-liste li {
+  padding: 10px 0;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #eee;
+  color: #444;
+}
+
+.livraison-liste li:last-child {
+  border-bottom: none;
+}
+
+.livraison-liste strong {
+  color: #d72669;
+}
+
+    </style>
+</head>
+<body>
+
+  
+ <header class="banniere-hero">
+    <nav class="navbar">
+      <img src="c:\Users\FUJITSU\Desktop\Nouveau dossier\image\logo2.png" alt="Levista" class="logo-img" />
+      <ul class="menu">
+        <li><a href="#Nouveautés">Nouveautés</a></li>
+        <li><a href="#Promos">Promos</a></li>
+        <li><a href="#Blog">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="hero-content">
+      <div class="hero-text">
+        <h2>DÉCOUVRE DES GÂTEAUX DE LUXE CHEZ LEVI'S CAKE 👌</h2>
+        <p>Un goût unique pour chaque moment.</p>
+        <a href="#Nouveautés" class="btn-hero" >Je découvre</a>
+      </div>
+      <div class="hero-img">
+        <img src="image\autre.png" alt="Gâteau de luxe" />
+        <img src="image\télécharger (2).png" alt="Gâteau de luxe" />
+      <img src="image\télécharger (3).png" alt="Gâteau de luxe" />
+      </div>
+    </div>
+  </header>
+
+</header>
+
+<section class="info-rapide">
+  <a href="#livraison"><div class="info-box">🚚 Livraison offerte dès 20.000 FCFA</div></a>
+  <a href="#commande"><div class="info-box">⚡ Commande rapide et facile</div></a>
+  <div class="info-box">💬 Support WhatsApp 7j/7</div>
+</section>
+
+<section class="galerie">
+  <img src="image\dessinGa1.jpg" alt="Gâteau 1">
+  <img src="image\dessinGa2.jpg" alt="Gâteau 2">
+  <img src="image\dessinGa3.jpg" alt="Gâteau 3">
+</section>
+
+
+
+    <header>
+        <h1>Douceurs Maison</h1>
+        <p>Bienvenue dans notre boutique de gâteaux faits maison !</p>
+    </header>
+
+    <nav class="menu-principal">
+        <a href="#catalogue">Catalogue</a>
+        <a href="#commande">Commander</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="container link-invitation">
+        <p>Partagez notre site avec vos amis :</p>
+        <a href="https://douceurs-maison.com">https://douceurs-maison.com</a>
+    </div>
+
+
+       <section class="container" id="catalogue" >
+  <h2>Nos Gâteaux</h2>
+
+  <!-- Ici tu mets les 8 premiers gâteaux -->
+  <div class="catalogue-gateaux">
+    <!-- Gâteau 1 -->
+    <div class="gateau">
+      <img src="image\0(1).jpg" alt="Gâteau Chocolat">
+      <h3>Gâteau Chocolat</h3>
+      <p>Prix : 5 000 FCFA</p>
+    </div>
+    <!-- Gâteau 2 -->
+    <div class="gateau">
+      <img src="image\6057d4778d0d7987b9a42cfdcc3dfec3.jpg" alt="Gâteau Vanille">
+      <h3>Gâteau Vanille</h3>
+      <p>Prix : 4 500 FCFA</p>
+    </div>
+     <div class="gateau">
+      <img src="image\8256eb6e8870e822c6bd6be8ce6f63eb.jpg" alt="Gâteau Vanille">
+      <h3>Gâteau Vanille</h3>
+      <p>Prix : 4 500 FCFA</p>
+    </div>
+    <!-- ... jusqu'au 8ème gâteau -->
+  </div>
+
+  <!-- Séparation claire avec le titre "Les Nouveautés" -->
+ <h2 id="Nouveautés" class="nouveautes-title">Les Nouveautés</h2>
+
+<div class="grille-nouveautes">
+  <!-- Gâteau 1 -->
+  <div class="gateaue">
+    <img src="image\autre.png" alt="Gâteau Chocolat">
+    <h3>Gâteau Chocolat</h3>
+    <p>Prix : 5 000 FCFA</p>
+  </div>
+
+  <!-- Gâteau 2 -->
+  <div class="gateaue">
+    <img src="image\OIP (3).jpeg" alt="Gâteau Vanille">
+    <h3>Gâteau Vanille</h3>
+    <p>Prix : 4 500 FCFA</p>
+  </div>
+
+  <!-- Gâteau 3 -->
+  <div class="gateaue">
+    <img src="image\OIP.jpeg" alt="Gâteau Fraise">
+    <h3>Gâteau Fraise</h3>
+    <p>Prix : 4 500 FCFA</p>
+  </div>
+
+  <!-- Gâteau 4 -->
+  <div class="gateaue">
+    <img src="image\image (1).png" alt="Gâteau Noisette">
+    <h3>Gâteau Noisette</h3>
+    <p>Prix : 5 500 FCFA</p>
+  </div>
+
+  <!-- Gâteau 5 -->
+  <div class="gateaue">
+    <img src="image\OIP (3).jpeg" alt="Gâteau Caramel">
+    <h3>Gâteau Caramel</h3>
+    <p>Prix : 5 000 FCFA</p>
+  </div>
+
+  <!-- Gâteau 6 -->
+  <div class="gateaue">
+    <img src="image\OIP (1).jpg" alt="Gâteau Coco">
+    <h3>Gâteau Coco</h3>
+    <p>Prix : 4 000 FCFA</p>
+  </div>
+</div>
+</section>
+</section>
+
+
+
+<section class="bloc-formulaire" id="commande">
+  <h2>🍰 Commander</h2>
+  <p class="intro">Remplissez ce formulaire pour commander votre douceur préférée !</p>
+
+  <form id="commande-form">
+    <label>Nom :
+      <input type="text" name="nom" required>
+    </label>
+
+    <label>Email :
+      <input type="email" name="email" required>
+    </label>
+
+    <label>Produit souhaité :
+      <select name="produit">
+        <option value="Gâteau au chocolat">Gâteau au chocolat</option>
+        <option value="Tarte aux fruits">Tarte aux fruits</option>
+        <option value="Cheesecake">Cheesecake</option>
+      </select>
+    </label>
+
+    <label>Quantité :
+      <input type="number" name="quantite" min="1" value="1">
+    </label>
+
+    <button type="submit">🛒 Envoyer la commande</button>
+  </form>
+
+  <!-- Ici s’affichera le message de succès ou d’erreur -->
+  <p id="resultat-message" style="margin-top: 15px; color: green;"></p>
+</section>
+
+
+<section class="bloc-formulaire" id="livraison">
+  <h2>🚚 Livraison</h2>
+  <p class="intro">Nous livrons vos douceurs avec soin et rapidité !</p>
+
+  <ul class="livraison-liste">
+    <li><strong>📍 Zones desservies :</strong> Douala, Yaoundé, Bonabéri, Logbaba</li>
+    <li><strong>💸 Frais de livraison :</strong> 1 000 FCFA à 2 000 FCFA selon la zone</li>
+    <li><strong>⏰ Délais :</strong> Livraison sous 24h après validation de la commande</li>
+    <li><strong>📅 Jours :</strong> Du lundi au samedi, de 8h à 18h</li>
+  </ul>
+
+  <p class="intro">Pour toute question, contactez-nous via la section ci-dessus.</p>
+</section>
+  
+
+<!-- Section Contact -->
+<section class="bloc-formulaire" id="contact">
+  <h2>Contactez-nous</h2>
+  <p><strong>Email :</strong> contact@douceurs-maison.com</p>
+  <p><strong>Téléphone :</strong> 06 12 34 56 78</p>
+  <p><strong>Adresse :</strong> 123 rue du Sucre, Paris</p>
+</section>
+
+
+    <footer>
+        <p>&copy; 2025 Douceurs Maison. Tous droits réservés.</p>
+        <p>Suivez-nous : Instagram | Facebook | TikTok</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  (function() {
+    // Remplace par ta clé publique (user ID)
+    emailjs.init("VOTRE_PUBLIC_KEY"); 
+  })();
+
+  document.getElementById('commande-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    emailjs.sendForm('VOTRE_SERVICE_ID', 'VOTRE_TEMPLATE_ID', this)
+      .then(function() {
+        document.getElementById("resultat-message").innerText = "✅ Commande envoyée avec succès !";
+      }, function(error) {
+        document.getElementById("resultat-message").innerText = "❌ Erreur d'envoi : " + error.text;
+      });
+  });
+</script>
+</body>
+</html>
