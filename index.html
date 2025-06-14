@@ -695,6 +695,58 @@ html {
 }
 
 
+catalogue-gateaux, .grille-nouveautes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 colonnes */
+  gap: 20px;
+  padding: 10px 0;
+}
+
+.gateau, .gateaue {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  background: #fff;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.gateau img, .gateaue img {
+  width: 100%;
+  height: auto;
+  max-height: 180px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.gateau h3, .gateaue h3 {
+  font-size: 1.1rem;
+  margin: 10px 0 5px;
+}
+
+.gateau p, .gateaue p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Responsive pour écrans ≤ 600px (smartphones) */
+@media (max-width: 600px) {
+  .catalogue-gateaux, .grille-nouveautes {
+    grid-template-columns: repeat(2, 1fr); /* 2 colonnes */
+    gap: 12px;
+    padding: 8px 0;
+  }
+  .gateaue h3, .gateau h3 {
+    font-size: 1rem;
+  }
+  .gateaue p, .gateau p {
+    font-size: 0.85rem;
+  }
+  .gateaue img, .gateau img {
+    max-height: 140px; /* un peu plus petit sur mobile */
+  }
+}
+
 
     </style>
 </head>
@@ -763,7 +815,7 @@ html {
   <div class="catalogue-gateaux">
     <!-- Gâteau 1 -->
     <div class="gateau">
-      <img src="image\0(1).jpg" alt="Gâteau Chocolat">
+      <img src="image/0(1).jpg" alt="Gâteau Chocolat">
       <h3>Gâteau Chocolat</h3>
       <p>Prix : 5 000 FCFA</p>
     </div>
@@ -857,6 +909,22 @@ html {
       <input type="number" name="quantite" min="1" value="1">
     </label>
 
+    <h2>Type de Commande</h2>
+
+  <label>
+    <input type="radio" name="livraison" value="avec" onchange="toggleQuartier(true)"> Avec livraison
+  </label>
+  <label>
+    <input type="radio" name="livraison" value="sans" onchange="toggleQuartier(false)"> Sans livraison
+  </label>
+
+  <!-- Partie visible seulement si livraison est cochée -->
+  <div id="zone-quartier" style="display: none; margin-top: 10px;">
+    <label for="quartier">Choisissez ou tapez votre quartier :</label>
+    <input type="text" id="quartier" name="quartier" placeholder="Ex: Akwa, Bonabéri, Makepe..." />
+  </div>
+
+
     <button type="submit">🛒 Envoyer la commande</button>
   </form>
 
@@ -870,7 +938,7 @@ html {
   <p class="intro">Nous livrons vos douceurs avec soin et rapidité !</p>
 
   <ul class="livraison-liste">
-    <li><strong>📍 Zones desservies :</strong> Douala, Yaoundé, Bonabéri, Logbaba</li>
+    <li><strong>📍 Zones desservies :</strong> Douala, Ndokotti, Bonabéri, Logbaba</li>
     <li><strong>💸 Frais de livraison :</strong> 1 000 FCFA à 2 000 FCFA selon la zone</li>
     <li><strong>⏰ Délais :</strong> Livraison sous 24h après validation de la commande</li>
     <li><strong>📅 Jours :</strong> Du lundi au samedi, de 8h à 18h</li>
@@ -894,20 +962,27 @@ html {
         <p>Suivez-nous : Instagram | Facebook | TikTok</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
-  (function() {
-    // Remplace par ta clé publique (user ID)
-    emailjs.init("VOTRE_PUBLIC_KEY"); 
+  (function () {
+    emailjs.init("FmOz6jhSfrvcn4vcA"); // Remplace avec ta clé EmailJS
   })();
 
-  document.getElementById('commande-form').addEventListener('submit', function(e) {
+  // Afficher/masquer le champ "quartier" selon livraison
+  function toggleQuartier(show) {
+    document.getElementById("zone-quartier").style.display = show ? "block" : "none";
+  }
+
+  // Envoi du formulaire
+  document.getElementById("commande-form").addEventListener("submit", function (e) {
     e.preventDefault();
 
-    emailjs.sendForm('VOTRE_SERVICE_ID', 'VOTRE_TEMPLATE_ID', this)
-      .then(function() {
+    emailjs.sendForm("service_1ux1a8v", "template_35wcvrb", this)
+      .then(function () {
         document.getElementById("resultat-message").innerText = "✅ Commande envoyée avec succès !";
-      }, function(error) {
+        document.getElementById("commande-form").reset();
+        toggleQuartier(false); // cacher le champ quartier après envoi
+      }, function (error) {
         document.getElementById("resultat-message").innerText = "❌ Erreur d'envoi : " + error.text;
       });
   });
