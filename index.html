@@ -818,13 +818,13 @@ html {
 <script>
   (function() {
     // Remplace par ta clé publique (user ID)
-    emailjs.init("VOTRE_PUBLIC_KEY"); 
+    emailjs.init("FmOz6jhSfrvcn4vcA"); 
   })();
 
   document.getElementById('commande-form').addEventListener('submit', function(e) {
     e.preventDefault();
 
-    emailjs.sendForm('VOTRE_SERVICE_ID', 'VOTRE_TEMPLATE_ID', this)
+    emailjs.sendForm('service_1ux1a8v', 'template_35wcvrb', this)
       .then(function() {
         document.getElementById("resultat-message").innerText = "✅ Commande envoyée avec succès !";
       }, function(error) {
