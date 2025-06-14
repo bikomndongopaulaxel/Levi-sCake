@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Levi's Cake</title>
+    <title>Douceurs Maison</title>
     <style>
         body {
             font-family: 'Segoe UI', sans-serif;
@@ -70,44 +70,50 @@
         }
 .catalogue-gateaux {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 colonnes égales */
-  gap: 90px; /* espace entre les images */
-  justify-content: center;
-  padding: 0 20px;
-  max-width: 900px; /* limite largeur totale */
-  margin: 0 auto; /* centre horizontalement */
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  padding: 10px;
 }
 
 .gateau {
-  border: 4px double white;
-  padding: 1em;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
   text-align: center;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: white;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-  transition: transform 0.3s ease;
-}
-
-.gateau:hover {
-  transform: translateY(-5px);
+  background: #fff;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
 }
 
 .gateau img {
   width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 10px;
+  height: auto;
+  border-radius: 6px;
+  object-fit: contain; /* Garde les proportions */
+  max-height: 180px; /* optionnel pour uniformiser */
 }
 
-.gateau img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
+.gateau h3 {
+  font-size: 1.1rem;
+  margin: 10px 0 5px;
 }
 
+.gateau p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Pour petits écrans */
+@media (max-width: 600px) {
+  .catalogue-gateaux {
+    grid-template-columns: repeat(2, 1fr); /* 2 colonnes */
+  }
+  .gateau h3 {
+    font-size: 1rem;
+  }
+  .gateau p {
+    font-size: 0.85rem;
+  }
+}
 .banniere {
   background: linear-gradient(to right, #ffdde1, #fbd3e9);
   padding: 1em;
@@ -239,6 +245,7 @@ gap: 1.5em;
   width: auto;
   filter: drop-shadow(0 0 6px #00bfff);
   transition: transform 0.3s, filter 0.3s;
+  background-image: url("c:\Users\FUJITSU\Desktop\Nouveau dossier\image\autre.png");
    background-size: cover;
   background-position: center;
 }
@@ -613,56 +620,129 @@ html {
   color: #d72669;
 }
 
+
+.galerie {
+  display: flex;
+  justify-content: space-between; /* espace entre images */
+  flex-wrap: nowrap; /* empêche les images de passer en ligne suivante */
+  gap: 10px; /* espace entre images */
+  padding: 0 10px; /* un peu de marge horizontale */
+  overflow-x: hidden; /* empêche scroll horizontal */
+}
+
+.galerie img {
+  flex: 1 1 0; /* les images prennent toutes une part égale */
+  max-width: 32%; /* pour bien avoir 3 images visibles */
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* Sur très petit écran, on réduit encore un peu la taille */
+@media (max-width: 480px) {
+  .galerie img {
+    max-width: 30%;
+  }
+}
+
+
+
+.grille-nouveautes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 10px;
+}
+
+.gateaue {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  background: #fff;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.gateaue img {
+  width: 100%;
+  height: auto;
+  max-height: 180px;
+  border-radius: 6px;
+  object-fit: contain;
+}
+
+.gateaue h3 {
+  font-size: 1.1rem;
+  margin: 10px 0 5px;
+}
+
+.gateaue p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Responsive : 2 colonnes max sur petits écrans */
+@media (max-width: 600px) {
+  .grille-nouveautes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .gateaue h3 {
+    font-size: 1rem;
+  }
+  .gateaue p {
+    font-size: 0.85rem;
+  }
+}
+
+
+
     </style>
 </head>
 <body>
 
-  
- <header class="banniere-hero">
-    <nav class="navbar">
-      <img src="image\logo2.png" alt="Levista" class="logo-img" />
-      <ul class="menu">
-        <li><a href="#Nouveautés">Nouveautés</a></li>
-        <li><a href="#Promos">Promos</a></li>
-        <li><a href="#Blog">Blog</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+ 
+<header class="banniere-hero">
+  <nav class="navbar">
+    <img src="image/logo2.png" alt="Levista" class="logo-img" />
+    <ul class="menu">
+      <li><a href="#Nouveautés">Nouveautés</a></li>
+      <li><a href="#Promos">Promos</a></li>
+      <li><a href="#Blog">Blog</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-    <div class="hero-content">
-      <div class="hero-text">
-        <h2>DÉCOUVRE DES GÂTEAUX DE LUXE CHEZ LEVI'S CAKE 👌</h2>
-        <p>Un goût unique pour chaque moment.</p>
-        <a href="#Nouveautés" class="btn-hero" >Je découvre</a>
-      </div>
-      <div class="hero-img">
-        <img src="image\autre.png" alt="Gâteau de luxe" />
-        <img src="image\télécharger (2).png" alt="Gâteau de luxe" />
-      <img src="image\télécharger (3).png" alt="Gâteau de luxe" />
-      </div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <h2>DÉCOUVRE DES GÂTEAUX DE LUXE CHEZ LEVI'S CAKE 👌</h2>
+      <p>Un goût unique pour chaque moment.</p>
+      <a href="#Nouveautés" class="btn-hero">Je découvre</a>
     </div>
-  </header>
-
+    <div class="hero-img">
+      <img src="image/autre.png" alt="Gâteau de luxe" />
+      
+      
+    </div>
+  </div>
 </header>
 
 <section class="info-rapide">
   <a href="#livraison"><div class="info-box">🚚 Livraison offerte dès 20.000 FCFA</div></a>
   <a href="#commande"><div class="info-box">⚡ Commande rapide et facile</div></a>
-  <div class="info-box">💬 Support WhatsApp 7j/7</div>
+  <a href="#"><div class="info-box">💬 Support WhatsApp 7j/7</div></a>
 </section>
 
 <section class="galerie">
-  <img src="image\dessinGa1.jpg" alt="Gâteau 1">
-  <img src="image\dessinGa2.jpg" alt="Gâteau 2">
-  <img src="image\dessinGa3.jpg" alt="Gâteau 3">
+  <img src="image/dessinGa1.jpg" alt="Gâteau 1">
+  <img src="image/dessinGa2.jpg" alt="Gâteau 2">
+  <img src="image/dessinGa3.jpg" alt="Gâteau 3">
 </section>
 
+<header>
+  <h1>Douceurs Maison</h1>
+  <p>Bienvenue dans notre boutique de gâteaux faits maison !</p>
+</header>
 
-
-    <header>
-        <h1>Douceurs Maison</h1>
-        <p>Bienvenue dans notre boutique de gâteaux faits maison !</p>
-    </header>
 
     <nav class="menu-principal">
         <a href="#catalogue">Catalogue</a>
@@ -672,7 +752,7 @@ html {
 
     <div class="container link-invitation">
         <p>Partagez notre site avec vos amis :</p>
-        <a href="https://https://bikomndongopaulaxel.github.io/Levi-sCake/">https://bikomndongopaulaxel.github.io/Levi-sCake/</a>
+        <a href="https://douceurs-maison.com">https://douceurs-maison.com</a>
     </div>
 
 
@@ -818,13 +898,13 @@ html {
 <script>
   (function() {
     // Remplace par ta clé publique (user ID)
-    emailjs.init("FmOz6jhSfrvcn4vcA"); 
+    emailjs.init("VOTRE_PUBLIC_KEY"); 
   })();
 
   document.getElementById('commande-form').addEventListener('submit', function(e) {
     e.preventDefault();
 
-    emailjs.sendForm('service_1ux1a8v', 'template_35wcvrb', this)
+    emailjs.sendForm('VOTRE_SERVICE_ID', 'VOTRE_TEMPLATE_ID', this)
       .then(function() {
         document.getElementById("resultat-message").innerText = "✅ Commande envoyée avec succès !";
       }, function(error) {
